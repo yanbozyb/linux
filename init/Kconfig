@@ -1660,6 +1660,10 @@ config NVSL_WALTZ
 	bool "Eanble NVSL_WALTZ feature"
 	default n
 
+config NVSL_WALTZ_DEBUG
+	bool "Eanble NVSL_WALTZ debug mode"
+	default n
+
 config ADVISE_SYSCALLS
 	bool "Enable madvise/fadvise syscalls" if EXPERT
 	default y
