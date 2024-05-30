@@ -129,7 +129,7 @@ struct request {
 	/* the following two fields are internal, NEVER access directly */
 	unsigned int __data_len;	/* total data len */
 	sector_t __sector;		/* sector cursor */
-#ifdef NVSL_WALTZ
+#ifdef CONFIG_NVSL_WALTZ
 	unsigned long		file_ino;
 	pgoff_t 			file_page_index;
 #endif

@@ -226,7 +226,7 @@ struct bio {
 	atomic_t		__bi_remaining;
 
 	struct bvec_iter	bi_iter;
-#ifdef NVSL_WALTZ
+#ifdef CONFIG_NVSL_WALTZ
 	unsigned long		file_ino;
 	pgoff_t 			file_page_index;
 #endif

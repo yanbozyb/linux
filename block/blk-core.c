@@ -114,7 +114,7 @@ void blk_rq_init(struct request_queue *q, struct request *rq)
 	INIT_LIST_HEAD(&rq->queuelist);
 	rq->q = q;
 	rq->__sector = (sector_t) -1;
-#ifdef NVSL_WALTZ
+#ifdef CONFIG_NVSL_WALTZ
 	rq->file_ino = (unsigned long) -1;
 	rq->file_page_index = (pgoff_t) -1;
 #endif

@@ -393,7 +393,7 @@ static void io_submit_init_bio(struct ext4_io_submit *io,
 			       struct buffer_head *bh)
 {
 	struct bio *bio;
-#ifdef NVSL_WALTZ
+#ifdef CONFIG_NVSL_WALTZ
 	struct page *page = bh->b_page;
 	struct address_space *mapping = page->mapping;
 	struct inode *inode = mapping->host;
@@ -412,8 +412,8 @@ static void io_submit_init_bio(struct ext4_io_submit *io,
 	io->io_bio = bio;
 	io->io_next_block = bh->b_blocknr;
 	wbc_init_bio(io->io_wbc, bio);
-#ifdef NVSL_WALTZ
-	//printk(KERN_INFO "[NVSL] inode: %lu, page index: %lu, \n", inode->i_ino, page->index);
+#ifdef CONFIG_NVSL_WALTZ
+	printk(KERN_INFO "[NVSL] inode: %lu, page index: %lu, \n", inode->i_ino, page->index);
 	bio->file_ino = inode->i_ino;
 	bio->file_page_index = page->index;
 #endif

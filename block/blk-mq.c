@@ -1959,7 +1959,7 @@ static void blk_mq_bio_to_request(struct request *rq, struct bio *bio,
 
 	rq->__sector = bio->bi_iter.bi_sector;
 	rq->write_hint = bio->bi_write_hint;
-#ifdef NVSL_WALTZ
+#ifdef CONFIG_NVSL_WALTZ
 	rq->file_ino = bio->file_ino;
 	rq->file_page_index = bio->file_page_index;
 #endif

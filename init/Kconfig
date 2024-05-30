@@ -1656,6 +1656,10 @@ config IO_URING
 	  applications to submit and complete IO through submission and
 	  completion rings that are shared between the kernel and application.
 
+config NVSL_WALTZ
+	bool "Eanble NVSL_WALTZ feature"
+	default n
+
 config ADVISE_SYSCALLS
 	bool "Enable madvise/fadvise syscalls" if EXPERT
 	default y
