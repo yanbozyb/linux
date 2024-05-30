@@ -114,6 +114,10 @@ void blk_rq_init(struct request_queue *q, struct request *rq)
 	INIT_LIST_HEAD(&rq->queuelist);
 	rq->q = q;
 	rq->__sector = (sector_t) -1;
+#ifdef NVSL_WALTZ
+	rq->file_ino = (unsigned long) -1;
+	rq->file_page_index = (pgoff_t) -1;
+#endif
 	INIT_HLIST_NODE(&rq->hash);
 	RB_CLEAR_NODE(&rq->rb_node);
 	rq->tag = BLK_MQ_NO_TAG;
