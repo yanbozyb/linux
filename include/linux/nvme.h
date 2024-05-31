@@ -819,7 +819,17 @@ struct nvme_rw_command {
 	__u8			flags;
 	__u16			command_id;
 	__le32			nsid;
+#ifdef CONFIG_NVSL_WALTZ
+	union {
+        __u64 rsvd2;
+        struct {
+            __u32 f_ino;
+            __u32 f_index;
+        };
+    };
+#else
 	__u64			rsvd2;
+#endif
 	__le64			metadata;
 	union nvme_data_ptr	dptr;
 	__le64			slba;

@@ -925,6 +925,11 @@ static inline blk_status_t nvme_setup_rw(struct nvme_ns *ns,
 	cmnd->rw.nsid = cpu_to_le32(ns->head->ns_id);
 	cmnd->rw.slba = cpu_to_le64(nvme_sect_to_lba(ns, blk_rq_pos(req)));
 	cmnd->rw.length = cpu_to_le16((blk_rq_bytes(req) >> ns->lba_shift) - 1);
+#ifdef CONFIG_NVSL_WALTZ
+	#define BITS_MASK_32 0xFFFFFFFF
+	cmnd->rw.f_ino = cpu_to_le32((__u32)(req->file_ino & BITS_MASK_32));
+	cmnd->rw.f_index = cpu_to_le32((__u32)(req->file_page_index & BITS_MASK_32));
+#endif
 
 	if (req_op(req) == REQ_OP_WRITE && ctrl->nr_streams)
 		nvme_assign_write_stream(ctrl, req, &control, &dsmgmt);
